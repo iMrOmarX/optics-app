@@ -1,9 +1,11 @@
+package javaapplication1;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.optics;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,14 +20,27 @@ import java.util.ArrayList;
  */
 public class Logger {
     File fileLog;
+    File folder ;
+    
     
     public Logger(String filePath) {
         try {
-            fileLog = new File(filePath);
-            if (!fileLog.exists()) 
-                    fileLog.createNewFile();
+            
+            /*folder = new File("OpticsData");
+            
+            if(!folder.exists()) {
+                folder.mkdir();
+            }
+            */
+            fileLog = new File( filePath);
+            if (!fileLog.exists())  {
+                System.out.println("File exists");
+                fileLog.createNewFile();
+            }
+                    
+            
         } catch (Exception e ){
-            System.out.println("Error");
+            e.printStackTrace();
         }
         
     }
@@ -54,7 +69,7 @@ public class Logger {
             
             return patients;
         } catch (Exception ex) {
-            
+            ex.printStackTrace();
         }
         return null;
     }
